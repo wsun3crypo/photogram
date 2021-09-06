@@ -7,6 +7,8 @@ class UserResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :comments
+
   has_many   :request_received,
              resource: FollowRequestResource,
              foreign_key: :recipient_id

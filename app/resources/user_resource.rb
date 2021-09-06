@@ -7,6 +7,9 @@ class UserResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :posts,
+             foreign_key: :users_id
+
   has_many   :comments
 
   has_many   :request_received,

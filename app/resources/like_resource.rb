@@ -13,4 +13,6 @@ class LikeResource < ApplicationResource
 
   # Indirect associations
 
+  has_one    :liker,
+             resource: UserResource
 end

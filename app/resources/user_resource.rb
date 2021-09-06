@@ -26,6 +26,14 @@ class UserResource < ApplicationResource
 
   # Indirect associations
 
+  has_many :likess, resource: LikeResource do
+    assign_each do |user, likes|
+      likes.select do |l|
+        l.id.in?(user.likess.map(&:id))
+      end
+    end
+  end
+
   has_many :commentss, resource: CommentResource do
     assign_each do |user, comments|
       comments.select do |c|

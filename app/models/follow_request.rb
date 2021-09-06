@@ -13,6 +13,8 @@ class FollowRequest < ApplicationRecord
 
   # Scopes
 
+  scope :rejected, -> {  }
+
   scope :accepted, -> {  }
 
   def to_s

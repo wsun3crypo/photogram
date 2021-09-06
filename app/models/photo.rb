@@ -4,10 +4,10 @@ class Photo < ApplicationRecord
   # Direct associations
 
   has_many   :comments,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :likes,
-             :dependent => :destroy
+             dependent: :destroy
 
   belongs_to :user
 
@@ -17,10 +17,9 @@ class Photo < ApplicationRecord
 
   # Scopes
 
-  scope :test, -> {  }
+  scope :test, -> {}
 
   def to_s
     caption
   end
-
 end

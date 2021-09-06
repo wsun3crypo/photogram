@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   # Direct associations
 
   belongs_to :users,
-             :class_name => "User"
+             class_name: "User"
 
   # Indirect associations
 
@@ -13,5 +13,4 @@ class Post < ApplicationRecord
   def to_s
     body
   end
-
 end

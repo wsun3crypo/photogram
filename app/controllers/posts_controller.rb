@@ -1,15 +1,14 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: %i[show edit update destroy]
 
   # GET /posts
   def index
     @q = Post.ransack(params[:q])
-    @posts = @q.result(:distinct => true).includes(:users).page(params[:page]).per(10)
+    @posts = @q.result(distinct: true).includes(:users).page(params[:page]).per(10)
   end
 
   # GET /posts/1
-  def show
-  end
+  def show; end
 
   # GET /posts/new
   def new
@@ -17,17 +16,16 @@ class PostsController < ApplicationController
   end
 
   # GET /posts/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /posts
   def create
     @post = Post.new(post_params)
 
     if @post.save
-      message = 'Post was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "Post was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @post, notice: message
       end
@@ -39,7 +37,7 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   def update
     if @post.update(post_params)
-      redirect_to @post, notice: 'Post was successfully updated.'
+      redirect_to @post, notice: "Post was successfully updated."
     else
       render :edit
     end
@@ -49,22 +47,22 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     message = "Post was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to posts_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def post_params
-      params.require(:post).permit(:body, :image, :users_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def post_params
+    params.require(:post).permit(:body, :image, :users_id)
+  end
 end

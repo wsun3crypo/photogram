@@ -15,5 +15,4 @@ class PhotoResource < ApplicationResource
   belongs_to :user
 
   # Indirect associations
-
 end

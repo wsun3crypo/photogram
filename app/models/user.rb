@@ -1,48 +1,47 @@
 class User < ApplicationRecord
-  
   include JwtToken
-# Direct associations
+  # Direct associations
 
   has_many   :posts,
-             :foreign_key => "users_id",
-             :dependent => :destroy
+             foreign_key: "users_id",
+             dependent: :destroy
 
   has_many   :comments,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :request_received,
-             :class_name => "FollowRequest",
-             :foreign_key => "recipient_id",
-             :dependent => :destroy
+             class_name: "FollowRequest",
+             foreign_key: "recipient_id",
+             dependent: :destroy
 
   has_many   :requests_sent,
-             :class_name => "FollowRequest",
-             :foreign_key => "sender_id",
-             :dependent => :destroy
+             class_name: "FollowRequest",
+             foreign_key: "sender_id",
+             dependent: :destroy
 
   has_many   :likes,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :photos,
-             :dependent => :destroy
+             dependent: :destroy
 
   # Indirect associations
 
   has_many   :follower,
-             :through => :request_received,
-             :source => :sender
+             through: :request_received,
+             source: :sender
 
   has_many   :following,
-             :through => :requests_sent,
-             :source => :recipient
+             through: :requests_sent,
+             source: :recipient
 
   has_many   :likess,
-             :through => :photos,
-             :source => :likes
+             through: :photos,
+             source: :likes
 
   has_many   :commentss,
-             :through => :photos,
-             :source => :comments
+             through: :photos,
+             source: :comments
 
   # Validations
 

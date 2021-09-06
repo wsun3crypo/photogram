@@ -12,5 +12,4 @@ class PostResource < ApplicationResource
              resource: UserResource
 
   # Indirect associations
-
 end

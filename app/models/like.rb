@@ -8,8 +8,8 @@ class Like < ApplicationRecord
   # Indirect associations
 
   has_one    :liker,
-             :through => :photo,
-             :source => :user
+             through: :photo,
+             source: :user
 
   # Validations
 
@@ -18,5 +18,4 @@ class Like < ApplicationRecord
   def to_s
     photo.to_s
   end
-
 end

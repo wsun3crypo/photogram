@@ -7,6 +7,10 @@ class UserResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :request_received,
+             resource: FollowRequestResource,
+             foreign_key: :recipient_id
+
   has_many   :requests_sent,
              resource: FollowRequestResource,
              foreign_key: :sender_id

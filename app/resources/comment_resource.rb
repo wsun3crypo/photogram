@@ -14,4 +14,6 @@ class CommentResource < ApplicationResource
 
   # Indirect associations
 
+  has_one    :commentator,
+             resource: UserResource
 end

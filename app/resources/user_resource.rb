@@ -26,4 +26,12 @@ class UserResource < ApplicationResource
 
   # Indirect associations
 
+  has_many :commentss, resource: CommentResource do
+    assign_each do |user, comments|
+      comments.select do |c|
+        c.id.in?(user.commentss.map(&:id))
+      end
+    end
+  end
+
 end

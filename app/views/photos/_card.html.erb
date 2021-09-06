@@ -19,7 +19,11 @@
 
       <dt>User</dt>
       <!-- Display user_id start -->
-      <dd><%= photo.user_id %></dd>
+      <dd>
+        <% if @photo.user.present? %>
+          <%= link_to photo.user, photo.user %>
+        <% end %>
+      </dd>
       <!-- Display user_id end -->
 
     </dl>

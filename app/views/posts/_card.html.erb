@@ -17,7 +17,11 @@
 
       <dt>Users</dt>
       <!-- Display users_id start -->
-      <dd><%= post.users_id %></dd>
+      <dd>
+        <% if @post.users.present? %>
+          <%= link_to post.users, post.users %>
+        <% end %>
+      </dd>
       <!-- Display users_id end -->
 
     </dl>

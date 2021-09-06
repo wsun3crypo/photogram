@@ -3,7 +3,7 @@ class FollowRequestsController < ApplicationController
 
   # GET /follow_requests
   def index
-    @follow_requests = FollowRequest.all
+    @follow_requests = FollowRequest.page(params[:page]).per(10)
   end
 
   # GET /follow_requests/1

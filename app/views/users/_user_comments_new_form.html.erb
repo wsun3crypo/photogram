@@ -1,0 +1,31 @@
+<!-- Form comment start -->
+<%= form_with(model: @comment, local: true) do |f| %>
+<!-- Form comment end -->
+
+  <!-- Label and input for user_id start -->
+  <!-- Input for user_id start -->
+  <%= f.hidden_field :user_id, value: @user.id %>
+  <!-- Input for user_id end -->
+  <!-- Label and input for user_id end -->
+
+  <!-- Label and input for photo_id start -->
+  <div class="form-group">
+    <%= f.label :photo_id %>
+
+    <!-- Input for photo_id start -->
+    <%= f.text_field :photo_id, class: "form-control" %>
+    <!-- Input for photo_id end -->
+  </div>
+  <!-- Label and input for photo_id end -->
+
+  <!-- Label and input for contents start -->
+  <div class="form-group">
+    <%= f.label :contents %>
+    <!-- Input for contents start -->
+    <%= f.text_area :contents, rows: "3", class: "form-control" %>
+    <!-- Input for contents end -->
+  </div>
+  <!-- Label and input for contents end -->
+
+  <%= f.submit "Create comment", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

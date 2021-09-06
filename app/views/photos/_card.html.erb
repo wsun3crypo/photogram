@@ -6,25 +6,19 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Caption</dt>
-      <!-- Display caption start -->
       <dd><%= photo.caption %></dd>
-      <!-- Display caption end -->
 
       <dt>Image</dt>
-      <!-- Display image start -->
       <dd>
         <%= cl_image_tag @photo.image, class: "img-fluid" %>
       </dd>
-      <!-- Display image end -->
 
       <dt>User</dt>
-      <!-- Display user_id start -->
       <dd>
         <% if @photo.user.present? %>
           <%= link_to photo.user, photo.user %>
         <% end %>
       </dd>
-      <!-- Display user_id end -->
 
     </dl>
 
@@ -33,7 +27,6 @@
         <%= link_to_show_or_back photo, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link photo start -->
       <div class="col">
         <% if current_user == @photo.user %>
           <%= link_to edit_photo_url(photo), class: "btn btn-block btn-sm btn-outline-secondary" do %>
@@ -41,9 +34,7 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Edit link photo end -->
 
-      <!-- Delete link photo start -->
       <div class="col">
         <% if current_user == @photo.user %>
           <%= link_to photo, method: :delete, data: { confirm: "Do you really want to delete this photo?" }, class: "btn btn-block btn-outline-secondary" do %>
@@ -51,7 +42,6 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Delete link photo end -->
     </div>
   </div>
 

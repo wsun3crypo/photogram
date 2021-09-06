@@ -68,7 +68,7 @@
 
     <%= f.label :users_id %>
     <!-- Input for users_id start -->
-    <%= f.number_field :users_id, class: user_class, placeholder: "Enter user" %>
+    <%= f.collection_select :users_id, User.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for users_id end -->
     <% if user_was_invalid %>
       <% post.errors.full_messages_for(:user).each do |message| %>

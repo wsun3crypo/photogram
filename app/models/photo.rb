@@ -15,6 +15,8 @@ class Photo < ApplicationRecord
 
   # Scopes
 
+  scope :test, -> {  }
+
   def to_s
     caption
   end

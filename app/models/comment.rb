@@ -7,6 +7,10 @@ class Comment < ApplicationRecord
 
   # Indirect associations
 
+  has_one    :commentator,
+             :through => :photo,
+             :source => :user
+
   # Validations
 
   # Scopes

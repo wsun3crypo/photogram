@@ -12,6 +12,8 @@ RSpec.describe Comment, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_one(:commentator) }
+
     end
 
     describe "Validations" do

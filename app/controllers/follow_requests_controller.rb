@@ -3,7 +3,8 @@ class FollowRequestsController < ApplicationController
 
   # GET /follow_requests
   def index
-    @follow_requests = FollowRequest.page(params[:page]).per(10)
+    @q = FollowRequest.ransack(params[:q])
+    @follow_requests = @q.result(:distinct => true).includes(:sender, :recipient).page(params[:page]).per(10)
   end
 
   # GET /follow_requests/1

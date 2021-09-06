@@ -7,6 +7,10 @@ class Like < ApplicationRecord
 
   # Indirect associations
 
+  has_one    :liker,
+             :through => :photo,
+             :source => :user
+
   # Validations
 
   # Scopes

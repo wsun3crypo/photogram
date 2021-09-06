@@ -12,6 +12,8 @@ RSpec.describe Like, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_one(:liker) }
+
     end
 
     describe "Validations" do

@@ -13,6 +13,8 @@ class FollowRequest < ApplicationRecord
 
   # Scopes
 
+  scope :pending, -> {  }
+
   scope :rejected, -> {  }
 
   scope :accepted, -> {  }

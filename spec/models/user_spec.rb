@@ -4,6 +4,8 @@ RSpec.describe User, type: :model do
   
     describe "Direct Associations" do
 
+    it { should have_many(:request_received) }
+
     it { should have_many(:requests_sent) }
 
     it { should have_many(:likes) }

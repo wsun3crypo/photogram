@@ -26,6 +26,22 @@ class UserResource < ApplicationResource
 
   # Indirect associations
 
+  has_many :follower, resource: UserResource do
+    assign_each do |user, users|
+      users.select do |u|
+        u.id.in?(user.follower.map(&:id))
+      end
+    end
+  end
+
+  has_many :following, resource: UserResource do
+    assign_each do |user, users|
+      users.select do |u|
+        u.id.in?(user.following.map(&:id))
+      end
+    end
+  end
+
   has_many :likess, resource: LikeResource do
     assign_each do |user, likes|
       likes.select do |l|
@@ -42,4 +58,16 @@ class UserResource < ApplicationResource
     end
   end
 
+
+  filter :sender_id, :integer do
+    eq do |scope, value|
+      scope.eager_load(:follower).where(:follow_requests => {:sender_id => value})
+    end
+  end
+
+  filter :recipient_id, :integer do
+    eq do |scope, value|
+      scope.eager_load(:following).where(:follow_requests => {:recipient_id => value})
+    end
+  end
 end
